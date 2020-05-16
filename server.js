@@ -15,13 +15,13 @@ const app = express();
 connectDB();
 
 
-// // Init Middleware
-// app.use(cors(
-//     {
-//         origin: 'http://localhost:8080',
-//         credentials: true
-//     }
-// ))
+// Init Middleware
+app.use(cors(
+    {
+        origin: 'http://localhost:8080',
+        credentials: true
+    }
+))
 
 app.use(express.json());
 app.use(cookieParser());
@@ -57,7 +57,9 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.use('/', serveStatic(path.join(__dirname, '/dist')))
-
+app.get('/.*/', (req, res) => {
+    res.sendFile(__dirname + '/dist/index.html');
+})
 
 const PORT = process.env.PORT || 5000;
 

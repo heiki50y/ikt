@@ -162,8 +162,9 @@ exports.createUpdateCompany = async (req, res, next) => {
 
         if (!taotlus) return res.status(400).json({ msg: 'Taotlust ei leitud' });
 
-       
-        console.log(taotlus);
+        const date = moment().format('DD.MM.YYYY')
+
+        const created = new Date(moment().format());
 
         const {
             praktikakoha_nimi,
@@ -192,6 +193,8 @@ exports.createUpdateCompany = async (req, res, next) => {
             praktikajuhendaja_tel,
             praktikajuhendaja_epost,
             ulesanded,
+            date,
+            created
            
         }
 
