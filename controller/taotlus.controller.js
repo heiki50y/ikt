@@ -105,7 +105,7 @@ exports.createUpdateTaotlus = async (req, res, next) => {
 
 exports.getAllTaotlus = async (req, res, next) => {
     try {
-        const student = await Taotlus.find().populate('user', ['name', 'group'])
+        const student = await Company.find().populate('taotlus', ['opilase_nimi', 'eriala', 'oppegrupp'])
           
         res.status(201).json(student);
     
@@ -113,6 +113,7 @@ exports.getAllTaotlus = async (req, res, next) => {
         next(err)
     }
 }
+
 
 exports.currentUserTaotlus = async (req, res, next) =>{
     try {
